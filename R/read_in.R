@@ -14,16 +14,15 @@ get_all_tags <- function(tags_text_file){
     return(alltags)
 }
 
-#function to get date in correct format
-#format can be changed to get correct
-# setClass('myDate')
-# setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y %H:%M:%S"))
-#
+#' Create class to hold datetime
+#' from character to new class
+setClass('myDate')
+setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y %H:%M:%S"))
 
-#read in detection data
+
+#' Get data to work with
+#' @param detection_data The containing pittag detections as directly downloaded
 get_detection_data <- function(detection_data){
-    setClass('myDate')
-    setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y %H:%M:%S"))
     alldata <- read.csv(detection_data,
                         header = TRUE,
                         colClasses = c("character", "myDate", "factor", "factor"))
@@ -32,7 +31,9 @@ get_detection_data <- function(detection_data){
     return(alldata)
 }
 
-#add date columns with lubridate for use in querying by date
+#' add_datetime_columns
+#' Adds columns that allow for easier temporal deliniation
+#' add date columns with lubridate for use in querying by date
 add_datetime_columns <- function(detection_dataframe){
     require(lubridate)
     detection_dataframe$year  <- year(detection_dataframe$detected_at)

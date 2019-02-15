@@ -12,7 +12,7 @@ detected_in_period <- function(data,
                                detection_resolution){
 
     #create variables that allow call datetime columns easily later
-    resolution_columns,  <- date_time_columns_selector(detection_resolution)
+    resolution_columns <- date_time_columns_selector(detection_resolution)
     first_dt_variable <- as.name(paste(detection_resolution))
 
     #convert character string start and end date to date class
