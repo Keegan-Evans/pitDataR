@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1549573688941.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8B6D5B7",
+    "lastKnownWriteTime" : 1550171536,
+    "last_content_update" : -2147483648,
+    "path" : "~/pitDataR/R/read_in.R",
+    "project_path" : "R/read_in.R",
+    "properties" : {
+        "cursorPosition" : "44,0",
+        "scrollLine" : "16"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

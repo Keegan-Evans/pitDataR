@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1549573687255.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8A3D5A40",
+    "lastKnownWriteTime" : 1550176359,
+    "last_content_update" : -2147483648,
+    "path" : "~/pitDataR/R/select_fish.R",
+    "project_path" : "R/select_fish.R",
+    "properties" : {
+        "cursorPosition" : "14,42",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

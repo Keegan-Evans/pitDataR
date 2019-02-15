@@ -1,0 +1,6 @@
+#* loadData.R
+#* temporary script to automatically load test data for development
+
+alldata <- get_detection_data("BAtags.csv")
+
+alltags <- get_all_tags("pits.csv")
