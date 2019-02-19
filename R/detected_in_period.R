@@ -11,40 +11,41 @@ detected_in_period <- function(data,
                                known_tags,
                                detection_resolution){
 
-    #create variables that allow call datetime columns easily later
-    resolution_columns <- date_time_columns_selector(detection_resolution)
-    first_dt_variable <- as.name(paste(detection_resolution))
+    #create variables to facilitate grouping by resolution
+    resolution_columns <- date_time_columns_selector(detection_resolution, data)
+    resolution_column_value <- resolution_columns[[1]]
+    date_column_names <- resolution_columns[[2]]
 
-    #convert character string start and end date to date class
-    start_date <- as.Date(start_date, format = "%m-%d-%Y")
-    end_date <- as.Date(end_date, format = "%m-%d-%Y")
 
     #subset data to only specified days
-    selectedData <- data %>%
-        filter(detected_at >= start_date & detected_at <= end_date) %>%
-        filter(tag %in% known_tags[['tag']]) %>%
-        group_by(paste(resolution_columns)) %>%
-        select(tag, first_dt_variable:year)
+    selectData <- subset_by_date_range(data, start_date, end_date)
 
-    #group by selected
-    # grouped_by_month <- alldata %>%
-    #     +     select(month, tag) %>%
-    #     +
-    #     + group_by(month) %>%
-    #     + distinct()
+    #group by resolution
+    grouped_by_resolution <- selectData %>%
+        group_by_at(.vars = date_column_names) %>%
+        count(tag)
+
+    return(grouped_by_resolution)
+
+
 }
 
-date_time_columns_selector <- function(resolution){
-    if(resolution == year){
-        return("year")
+date_time_columns_selector <- function(resolution, data){
+    if(resolution == "year"){
+        reso_var <- (list(5, names(data)[5]))
     }else if(resolution == "month"){
-        return("year, month")
+        reso_var <- (list(6, names(data)[5:6]))
+    }else if(resolution == "week"){
+        reso_var <- (list(7, names(data)[5:7]))
     }else if(resolution == "day"){
-        return("year, month, day")
+        reso_var <- (list(8, names(data)[5:8]))
     }else if(resolution == "hour"){
-        return("year, month, day, hour")
+        reso_var <- (list(9, names(data)[5:9]))
     }else{
         #better error handling here
-        stop()
+        stop("The selected resolution is not an available interval.")
     }
+    #output
+    return(reso_var)
+
 }

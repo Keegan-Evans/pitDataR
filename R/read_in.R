@@ -25,7 +25,7 @@ setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y 
 get_detection_data <- function(detection_data){
     alldata <- read.csv(detection_data,
                         header = TRUE,
-                        colClasses = c("character", "myDate", "factor", "factor"))
+                        colClasses = c("factor", "myDate", "factor", "factor"))
     #add date time columns
     alldata <- add_datetime_columns(alldata)
     return(alldata)
