@@ -7,14 +7,25 @@ get_all_tags <- function(tags_text_file){
     alltags <- read.csv(tags_text_file,
                         skip = 1,
                         blank.lines.skip = TRUE,
-                        colClasses = c("NULL", "factor"),
+                        colClasses = c("NULL", "character"),
                         header = FALSE,
                         col.names = c("","tag")
                         )
     return(alltags)
 }
 
-#' Create class to hold datetime
+tags_with_species_code <- function(tags_text_file){
+    alltags <- read.csv(tags_text_file,
+                        skip = 1,
+                        blank.lines.skip = TRUE,
+                        colClasses = c("NULL", "character", "character"),
+                        header = FALSE,
+                        col.names = c("","tag", "species")
+    )
+    return(alltags)
+}
+
+#'Create class to hold datetime
 #' from character to new class
 setClass('myDate')
 setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y %H:%M:%S"))
@@ -25,7 +36,7 @@ setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y 
 get_detection_data <- function(detection_data){
     alldata <- read.csv(detection_data,
                         header = TRUE,
-                        colClasses = c("factor", "myDate", "factor", "factor"))
+                        colClasses = c("character", "myDate", "factor", "factor"))
     #add date time columns
     alldata <- add_datetime_columns(alldata)
     return(alldata)

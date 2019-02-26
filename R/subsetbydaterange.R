@@ -14,7 +14,7 @@ subset_by_date_range <- function(data_set, start_date, end_date){
 
     #subset data to only specified days
     selectedData <- data_set %>%
-        filter(detected_at >= start_date & detected_at <= end_date)
+        filter(detected_at >= start_date & detected_at <= end_date | is.na(detected_at) == TRUE)
 
     return(selectedData)
 }
