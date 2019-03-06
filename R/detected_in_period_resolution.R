@@ -8,23 +8,29 @@
 #' specified as a character string of one of the folling: "year", "month", "week", "day"
 #' detected_in_period()
 
-detected_in_period_resolution <- function(data,
-                               start_date = min(data[['detected_at']]),
-                               end_date = max(data[['detected_at']]),
+detected_in_period_resolution <- function(data_set,
+                               start_date = NULL,
+                               end_date = NULL,
                                known_tags,
                                detection_resolution){
 
+
+    data_with_species <- left_join(data_set, known_tags)
+    data_with_species$detected_at <- as.Date(data_with_species$detected_at)
+
     #create variables to facilitate grouping by resolution
-    resolution_columns <- date_time_columns_selector(detection_resolution, data)
+    resolution_columns <- date_time_columns_selector(detection_resolution, data_with_species)
     resolution_column_value <- resolution_columns[[1]]
     date_column_names <- resolution_columns[[2]]
 
-
     #subset data to only specified days
-    selectData <- subset_by_date_range(data, start_date, end_date)
+    if(!is.null(start_date)| !is.null(end_date)){
+    data_with_species <- subset_by_date_range(data_with_species, start_date, end_date)
+    }
+
 
     #group by resolution
-    grouped_by_resolution <- selectData %>%
+    grouped_by_resolution <- data_with_species %>%
         group_by_at(.vars = date_column_names) %>%
         count(tag)
 

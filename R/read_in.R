@@ -9,7 +9,8 @@ get_all_tags <- function(tags_text_file){
                         blank.lines.skip = TRUE,
                         colClasses = c("NULL", "character"),
                         header = FALSE,
-                        col.names = c("","tag")
+                        col.names = c("","tag"),
+                        stringsAsFactors = FALSE
                         )
     return(alltags)
 }
@@ -20,7 +21,8 @@ tags_with_species_code <- function(tags_text_file){
                         blank.lines.skip = TRUE,
                         colClasses = c("NULL", "character", "character"),
                         header = FALSE,
-                        col.names = c("","tag", "species")
+                        col.names = c("","tag", "species"),
+                        stringsAsFactors = FALSE
     )
     return(alltags)
 }
@@ -46,11 +48,10 @@ get_detection_data <- function(detection_data){
 #' Adds columns that allow for easier temporal deliniation
 #' add date columns with lubridate for use in querying by date
 add_datetime_columns <- function(detection_dataframe){
-    require(lubridate)
-    detection_dataframe$year  <- year(detection_dataframe$detected_at)
-    detection_dataframe$month <- month(detection_dataframe$detected_at)
-    detection_dataframe$week  <- week(detection_dataframe$detected_at)
-    detection_dataframe$day   <- day(detection_dataframe$detected_at)
-    detection_dataframe$hour  <- hour(detection_dataframe$detected_at)
+    detection_dataframe$year  <- lubridate::year(detection_dataframe$detected_at)
+    detection_dataframe$month <- lubridate::month(detection_dataframe$detected_at)
+    detection_dataframe$week  <- lubridate::week(detection_dataframe$detected_at)
+    detection_dataframe$day   <- lubridate::day(detection_dataframe$detected_at)
+    detection_dataframe$hour  <- lubridate::hour(detection_dataframe$detected_at)
     return(detection_dataframe)
 }
