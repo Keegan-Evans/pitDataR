@@ -22,11 +22,11 @@ detected_in_period <- function(data_set,
 
     #group by resolution
     detected_in_period <- data_set %>%
-                            mutate(tag = as.factor(tag)) %>%
-                            group_by(tag) %>%
-                            count(tag) %>%
-                            mutate(detected = n > 1) %>%
-                            select(tag, detected)
+                            dplyr::mutate(tag = as.factor(tag)) %>%
+                            dplyr::group_by(tag) %>%
+                            dplyr::count(tag) %>%
+                            dplyr::mutate(detected = n > 1) %>%
+                            dplyr::select(tag, detected)
 
     return(detected_in_period)
 }
