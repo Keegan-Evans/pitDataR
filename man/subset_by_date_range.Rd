@@ -2,7 +2,7 @@
 % Please edit documentation in R/subsetbydaterange.R
 \name{subset_by_date_range}
 \alias{subset_by_date_range}
-\title{subset_by_date_ranges}
+\title{subset_by_date_range}
 \usage{
 subset_by_date_range(data_set, date_col = "detected_at", start_date,
   end_date, na.rm = FALSE)
@@ -20,10 +20,7 @@ of observation}
 \value{
 A data frame subsetted to observations only inclusively
 within specified range, but including all original columns
-
-
-Subsets data by specified range.
 }
 \description{
-subset_by_date_ranges
+subset_by_date_range
 }

@@ -3,9 +3,7 @@
 \docType{class}
 \name{myDate-class}
 \alias{myDate-class}
-\title{Create class to hold datetime
-from character to new class}
+\title{Class to import datetime from character variable in original dataset in correct format.}
 \description{
-Create class to hold datetime
-from character to new class
+Class to import datetime from character variable in original dataset in correct format.
 }

@@ -7,8 +7,11 @@ Depends: R (>= 3.3.0)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Imports: lubridate,
-        RODBC,
-        dplyr,
-        lazyeval
+Imports:
+    lubridate,
+    dplyr,
+    lazyeval,
+    magrittr
+Suggests:
+    RODBC
 RoxygenNote: 6.1.1

@@ -2,21 +2,27 @@
 % Please edit documentation in R/detected_in_period_resolution.R
 \name{detected_in_period_resolution}
 \alias{detected_in_period_resolution}
-\title{detected_in_period_resolution.R}
+\title{detected_in_period_resolution}
 \usage{
 detected_in_period_resolution(data_set, start_date = NULL,
   end_date = NULL, known_tags, detection_resolution)
 }
 \arguments{
-\item{start_date}{Enter as character string "Month-Day-Year"}
+\item{start_date}{Enter as character string "MM-DD-YYYY"}
 
-\item{end_date}{Enter as character string "Month-Day-Year"}
+\item{end_date}{Enter as character string "MM-DD-YYYY"}
 
-\item{resolution}{The resolution you want to view the data divided into,
-specified as a character string of one of the folling: "year", "month", "week", "day"
-detected_in_period()}
+\item{known_tags}{Tags either imported using\code{\link{tags_from_db}}.}
+
+\item{detection_dataframe}{Data read in using
+\code{\link{get_detection_data}}.}
+
+\item{resolution}{The resolution you want to view the data divided into
+specified as a character string of one of the following: "year", "month",
+"week", "day", or "hour"}
 }
 \description{
-This function allows you to detect which specimens from a list were detected in
-a specified period divided by a specified resolution
+This function allows you to detect which specimens from a list were detected
+either over all time or over specified interval. Shows detections per
+specified resolution intervals.
 }

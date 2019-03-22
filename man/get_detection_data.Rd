@@ -2,13 +2,18 @@
 % Please edit documentation in R/read_in.R
 \name{get_detection_data}
 \alias{get_detection_data}
-\title{Get data to work with}
+\title{get_detection_data
+Reads in detection data}
 \usage{
-get_detection_data(detection_data)
+get_detection_data(data_set)
 }
 \arguments{
-\item{detection_data}{The containing pittag detections as directly downloaded}
+\item{data_set}{Path to data containing pittag detections as directly downloaded from Biomark's BIOlogic in .csv format. Use forward slashes to specify path.}
+}
+\value{
+Returns dataframe with variables: tag, detected_at, reader_antenna, year, month, week, day, hour
 }
 \description{
-Get data to work with
+get_detection_data
+Reads in detection data
 }

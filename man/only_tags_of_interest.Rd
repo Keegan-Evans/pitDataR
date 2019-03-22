@@ -2,8 +2,8 @@
 % Please edit documentation in R/only_tags_of_interest.R
 \name{only_tags_of_interest}
 \alias{only_tags_of_interest}
-\title{only_tags_of_interest.R
-subsets all of the data to include only the values from list of tags.}
+\title{only_tags_of_interest subsets all of the data to include only the values of
+from}
 \usage{
 only_tags_of_interest(data, tags)
 }
@@ -12,7 +12,11 @@ only_tags_of_interest(data, tags)
 
 \item{tags}{the dataframe containing the tags of interest.}
 }
+\value{
+Returns dataframe with the same variables as the original data set,
+  but only containing observations for the selected tags.
+}
 \description{
-only_tags_of_interest.R
-subsets all of the data to include only the values from list of tags.
+only_tags_of_interest subsets all of the data to include only the values of
+from
 }

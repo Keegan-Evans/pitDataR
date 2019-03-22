@@ -1,10 +1,8 @@
-#####RESTORE TO OLD##############
 #' detected_in_period.R
-#' check over this functionality
 #' This is a method to determine if there was a detection of a particular tag
 #' in a specied period and return a bolean of detections
 #'
-#'
+#' @export
 
 detected_in_period <- function(data,
                                start_date = min(data[['detected_at']]),
@@ -15,11 +13,11 @@ detected_in_period <- function(data,
 
     #group by resolution
     detected_in_period <- selectData %>%
-        mutate(tag = as.factor(tag)) %>%
-        group_by(tag) %>%
-        count(tag) %>%
-        mutate(detected = n > 1) %>%
-        select(tag, detected)
+                            mutate(tag = as.factor(tag)) %>%
+                            group_by(tag) %>%
+                            count(tag) %>%
+                            mutate(detected = n > 1) %>%
+                            select(tag, detected)
 
     return(detected_in_period)
 }

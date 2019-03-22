@@ -2,14 +2,19 @@
 % Please edit documentation in R/read_in.R
 \name{add_datetime_columns}
 \alias{add_datetime_columns}
-\title{add_datetime_columns
-Adds columns that allow for easier temporal deliniation
-add date columns with lubridate for use in querying by date}
+\title{add_datetime_columns Adds columns that allow for easier temporal deliniation}
 \usage{
 add_datetime_columns(detection_dataframe)
 }
+\arguments{
+\item{detection_dataframe}{Data read in using
+\code{\link{get_detection_data}} that contains a the column 'detected_at'
+with date/time date in it.}
+}
+\value{
+Original dataframe with additional columns containing integer values
+  for year, month, week, day, and hour.
+}
 \description{
-add_datetime_columns
-Adds columns that allow for easier temporal deliniation
-add date columns with lubridate for use in querying by date
+add_datetime_columns Adds columns that allow for easier temporal deliniation
 }

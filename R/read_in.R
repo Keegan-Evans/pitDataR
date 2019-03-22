@@ -27,26 +27,46 @@ tags_with_species_code <- function(tags_text_file){
     return(alltags)
 }
 
-#'Create class to hold datetime
-#' from character to new class
+
+
+#' Class to import datetime from character variable in original dataset in correct format.
+
 setClass('myDate')
 setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y %H:%M:%S"))
 
 
-#' Get data to work with
-#' @param detection_data The containing pittag detections as directly downloaded
-get_detection_data <- function(detection_data){
-    alldata <- read.csv(detection_data,
+
+
+#' get_detection_data
+#' Reads in detection data
+#'
+#' @param data_set Path to data containing pittag detections as directly downloaded from Biomark's BIOlogic in .csv format. Use forward slashes to specify path.
+#' @return Returns dataframe with variables: tag, detected_at, reader_antenna, year, month, week, day, hour
+#' @export
+
+
+get_detection_data <- function(data_set){
+    alldata <- read.csv(data_set,
                         header = TRUE,
-                        colClasses = c("character", "myDate", "factor", "factor"))
+                        colClasses = c("character", "myDate", "factor",  "factor"))
+
     #add date time columns
-    alldata <- add_datetime_columns(alldata)
+    alldata <- pitDataR::add_datetime_columns(alldata)
     return(alldata)
 }
 
-#' add_datetime_columns
-#' Adds columns that allow for easier temporal deliniation
-#' add date columns with lubridate for use in querying by date
+
+
+
+
+
+#' add_datetime_columns Adds columns that allow for easier temporal deliniation
+#' @param detection_dataframe Data read in using
+#'   \code{\link{get_detection_data}} that contains a the column 'detected_at'
+#'   with date/time date in it.
+#' @return Original dataframe with additional columns containing integer values
+#'   for year, month, week, day, and hour.
+
 add_datetime_columns <- function(detection_dataframe){
     detection_dataframe$year  <- lubridate::year(detection_dataframe$detected_at)
     detection_dataframe$month <- lubridate::month(detection_dataframe$detected_at)

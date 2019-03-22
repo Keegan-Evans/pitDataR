@@ -1,7 +1,9 @@
-#' only_tags_of_interest.R
-#' subsets all of the data to include only the values from list of tags.
+#' only_tags_of_interest subsets all of the data to include only the values of
+#' from
 #' @param data the dataframe containing all detection data
 #' @param tags the dataframe containing the tags of interest.
+#' @return Returns dataframe with the same variables as the original data set,
+#'   but only containing observations for the selected tags.
 
 
 only_tags_of_interest <- function(data, tags){

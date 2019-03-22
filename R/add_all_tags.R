@@ -1,4 +1,4 @@
-#' add_all_tags.R
+#' add_all_tags
 #' This function creates a data frame from all of the possible tags that matches
 #' the format of the detection data, then joins it with the detection data
 #' to produce a table to be fed to MARK to determine capture probabilities.

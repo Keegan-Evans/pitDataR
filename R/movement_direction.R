@@ -2,6 +2,7 @@
 #' @param dataset The data set containing the observations
 #' @return dataframe containing the tag, detection time/date info,
 #' direction of travel and over which detector interval the observation was made
+#' @export
 
 movement_detection <- function(dataset){
     dir <- dataset %>%

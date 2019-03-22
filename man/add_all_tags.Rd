@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_all_tags.R
 \name{add_all_tags}
 \alias{add_all_tags}
-\title{add_all_tags.R
+\title{add_all_tags
 This function creates a data frame from all of the possible tags that matches
 the format of the detection data, then joins it with the detection data
 to produce a table to be fed to MARK to determine capture probabilities.}
@@ -10,7 +10,7 @@ to produce a table to be fed to MARK to determine capture probabilities.}
 add_all_tags(detection, tags)
 }
 \description{
-add_all_tags.R
+add_all_tags
 This function creates a data frame from all of the possible tags that matches
 the format of the detection data, then joins it with the detection data
 to produce a table to be fed to MARK to determine capture probabilities.
