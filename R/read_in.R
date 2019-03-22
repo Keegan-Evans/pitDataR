@@ -1,9 +1,14 @@
-#read_in.py
-#reads data in for use by other functions
-
+#' Read in tags
+#'
+#' Reads in tags from .csv file. Expects row numbers in first column that are
+#' removed. Skips first line as column name.
+#' @param tags_text_file .csv file containing tags.
+#' @return Returns dataframe with one column named "tags" for use with other
+#'   functions in package.
+#' @export
 
 #read in all tags
-get_all_tags <- function(tags_text_file){
+get_tag_list <- function(tags_text_file){
     alltags <- read.csv(tags_text_file,
                         skip = 1,
                         blank.lines.skip = TRUE,
@@ -14,6 +19,16 @@ get_all_tags <- function(tags_text_file){
                         )
     return(alltags)
 }
+
+#' tags_with_species_code
+#'
+#' Gets tag numbers and species code from csv file
+#' @param tags_text_file A csv file containing tags and species code. Expects
+#'   file to how column of row numbers but then removes them. Skips line
+#'   containing columnames.
+#' @return Returns dataframe with two columns "tag" and "species" to be used
+#'   with other functions in this package.
+#' @export
 
 tags_with_species_code <- function(tags_text_file){
     alltags <- read.csv(tags_text_file,
