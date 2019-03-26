@@ -2,7 +2,7 @@
 #'
 #' Reads in tags from .csv file. Expects row numbers in first column that are
 #' removed. Skips first line as column name.
-#' @param tags_text_file .csv file containing tags.
+#' @param tags_text_file .csv file containing tags in the the second column.
 #' @return Returns dataframe with one column named "tags" for use with other
 #'   functions in package.
 #' @export
