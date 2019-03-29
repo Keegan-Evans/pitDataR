@@ -7,7 +7,7 @@
 get_tag_list(tags_text_file)
 }
 \arguments{
-\item{tags_text_file}{.csv file containing tags.}
+\item{tags_text_file}{.csv file containing tags in the the second column.}
 }
 \value{
 Returns dataframe with one column named "tags" for use with other

@@ -26,7 +26,7 @@ subset_by_date_range <- function(data_set, date_col = "detected_at", start_date,
 
     #subset data to only specified days
     selectedData <- data_set %>%
-        filter_(filter_crit)
+        dplyr::filter_(filter_crit)
 
     return(selectedData)
 }

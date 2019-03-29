@@ -2,16 +2,19 @@
 % Please edit documentation in R/add_all_tags.R
 \name{add_all_tags}
 \alias{add_all_tags}
-\title{add_all_tags
-This function creates a data frame from all of the possible tags that matches
-the format of the detection data, then joins it with the detection data
-to produce a table to be fed to MARK to determine capture probabilities.}
+\title{add_all_tags}
 \usage{
 add_all_tags(detection, tags)
 }
+\value{
+returns dataframe that contains subsetted master detection dat of
+  containing only observations for speciemens from specified list of tags
+  plus blank observations of ALL tags from list. This allows for
+  initialization of dataframe in
+  \code{\link{generate_data_for_survival_analysis}}
+}
 \description{
-add_all_tags
 This function creates a data frame from all of the possible tags that matches
-the format of the detection data, then joins it with the detection data
-to produce a table to be fed to MARK to determine capture probabilities.
+the format of the detection data, then joins it with the detection data to
+produce a table to be fed to MARK to determine capture probabilities.
 }

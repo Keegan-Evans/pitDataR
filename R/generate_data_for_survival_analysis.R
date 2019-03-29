@@ -14,7 +14,11 @@ generate_data_for_survival_analysis <- function(data_set, tags, dates){
     alldata <- add_all_tags(data_set, tags)
 
     #intialize data frame with release tag detection to set to true
-    release <- data.frame(tag = tags$tag, intial = TRUE)
+    all_periods <- data.frame(tag = tags$tag, intial = TRUE)
+
+
+    #list to hold detections
+    period_detections <- list()
 
     #initialize vector to hold individual detection interval observations
 
@@ -23,6 +27,15 @@ generate_data_for_survival_analysis <- function(data_set, tags, dates){
     # for(i in 2:length(dcv)-1){
     #     +     print(paste(dcv[i], dcv[i + 1]))
     #     + }
+    for(i in 2:length(dates) - 1){
+        each_period <- detected_in_period(alldata, dates[i], dates[i + 1])
+        all_periods <- dplyr::full_join(all_periods, each_period, by = c('tag' = 'tag'))
+    }
+
+    return(all_periods)
+
+
+    #combine date from period_detections with list
 
 
     #initialize master frame by joining release to first interval

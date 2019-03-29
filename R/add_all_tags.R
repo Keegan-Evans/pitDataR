@@ -10,7 +10,7 @@
 #'   containing only observations for speciemens from specified list of tags
 #'   plus blank observations of ALL tags from list. This allows for
 #'   initialization of dataframe in
-#'   \code{\line{generate_data_for_survival_analysis}}
+#'   \code{\link{generate_data_for_survival_analysis}}
 #' @export
 
 add_all_tags <- function(detection, tags){
@@ -47,6 +47,6 @@ add_all_tags <- function(detection, tags){
 
 
 only_tags_of_interest <- function(data, tags){
-    subsetted_data <- filter(data, tag %in% tags$tag)
+    subsetted_data <- dplyr::filter(data, tag %in% tags$tag)
     return(subsetted_data)
 }
