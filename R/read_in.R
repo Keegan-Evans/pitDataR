@@ -53,10 +53,20 @@ setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y 
 
 
 #' get_detection_data
-#' Reads in detection data
 #'
-#' @param data_set Path to data containing pittag detections as directly downloaded from Biomark's BIOlogic in .csv format. Use forward slashes to specify path.
-#' @return Returns dataframe with variables: tag, detected_at, reader_antenna, year, month, week, day, hour
+#' Reads in detection data for further analysis using the tools in this package.
+#' You can read in multiple data sets and then rbind them together to perform an
+#' analysis on all data.
+#'
+#'
+#' @param data_set Path to data containing pittag detections as directly
+#'   downloaded from Biomark's BIOlogic in .csv format. Use forward slashes to
+#'   specify path. Field names should be as follows: "tag", "detected_at",
+#'   "reader", "antenna". Data from other sources may be used if the follow this
+#'   same format, with the 'detected_at' field containing data in a 'mm-dd-yyyy
+#'   hh:mm:ss' format.
+#' @return Returns dataframe with variables: tag, detected_at, reader_antenna,
+#'   year, month, week, day, hour.
 #' @export
 
 
