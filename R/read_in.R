@@ -66,7 +66,7 @@ get_detection_data <- function(data_set){
                         colClasses = c("character", "myDate", "factor",  "factor"))
 
     #add date time columns
-    alldata <- pitDataR::add_datetime_columns(alldata)
+    alldata <- add_datetime_columns(alldata)
     return(alldata)
 }
 
