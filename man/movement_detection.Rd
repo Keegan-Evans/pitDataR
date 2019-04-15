@@ -2,7 +2,7 @@
 % Please edit documentation in R/movement_direction.R
 \name{movement_detection}
 \alias{movement_detection}
-\title{movement_direction}
+\title{Movement direction detection}
 \usage{
 movement_detection(dataset)
 }
@@ -10,9 +10,9 @@ movement_detection(dataset)
 \item{dataset}{The data set containing the observations}
 }
 \value{
-dataframe containing the tag, detection time/date info,
-direction of travel and over which detector interval the observation was made
+Returns a dataframe containing the tag, detection time/date info,
+  direction of travel, and which detector interval made the observation.
 }
 \description{
-movement_direction
+Returns data on directional movement across detection array.
 }

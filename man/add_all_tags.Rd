@@ -11,7 +11,7 @@ returns dataframe that contains subsetted master detection dat of
   containing only observations for speciemens from specified list of tags
   plus blank observations of ALL tags from list. This allows for
   initialization of dataframe in
-  \code{\link{generate_data_for_survival_analysis}}
+  \code{\link{generate_encounter_history}}
 }
 \description{
 This function creates a data frame from all of the possible tags that matches

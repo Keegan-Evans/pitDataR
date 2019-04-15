@@ -2,18 +2,24 @@
 % Please edit documentation in R/read_in.R
 \name{get_detection_data}
 \alias{get_detection_data}
-\title{get_detection_data
-Reads in detection data}
+\title{get_detection_data}
 \usage{
 get_detection_data(data_set)
 }
 \arguments{
-\item{data_set}{Path to data containing pittag detections as directly downloaded from Biomark's BIOlogic in .csv format. Use forward slashes to specify path.}
+\item{data_set}{Path to data containing pittag detections as directly
+downloaded from Biomark's BIOlogic in .csv format. Use forward slashes to
+specify path. Field names should be as follows: "tag", "detected_at",
+"reader", "antenna". Data from other sources may be used if the follow this
+same format, with the 'detected_at' field containing data in a 'mm-dd-yyyy
+hh:mm:ss' format.}
 }
 \value{
-Returns dataframe with variables: tag, detected_at, reader_antenna, year, month, week, day, hour
+Returns dataframe with variables: tag, detected_at, reader_antenna,
+  year, month, week, day, hour.
 }
 \description{
-get_detection_data
-Reads in detection data
+Reads in detection data for further analysis using the tools in this package.
+You can read in multiple data sets and then rbind them together to perform an
+analysis on all data.
 }
