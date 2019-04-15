@@ -1,7 +1,10 @@
-#' @title movement_direction
+#' Movement direction detection
+#'
+#' Returns data on directional movement across detection array.
+#'
 #' @param dataset The data set containing the observations
-#' @return dataframe containing the tag, detection time/date info,
-#' direction of travel and over which detector interval the observation was made
+#' @return Returns a dataframe containing the tag, detection time/date info,
+#'   direction of travel, and which detector interval made the observation.
 #' @export
 
 movement_detection <- function(dataset){
@@ -14,7 +17,7 @@ movement_detection <- function(dataset){
         mutate(direction = ifelse(c(0,diff(antenna))<0, "up",
                                   ifelse(c(0,diff(antenna))>0, "down",
                                          "N"))) %>%
-        #make column that shows between which 2 sets of antennas the detection took place
+        #determine which interval the detection occured in.
         mutate(detector_interval = ifelse(c(antenna == "02" & direction == "up" |
                                     antenna == "03" & direction == "down"),
                                  "downstream",
