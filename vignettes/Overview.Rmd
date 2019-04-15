@@ -1,0 +1,53 @@
+--- 
+title: "pitDataR Overview" 
+author: "Keegan Evans" 
+output: rmarkdown::html_vignette 
+vignette: > 
+    %\VignetteIndexEntry{Overview}
+    %\VignetteEngine{knitr::rmarkdown} 
+    %\VignetteEncoding{UTF-8} 
+---
+
+```
+{r, include = FALSE} knitr::opts_chunk$set( collapse = TRUE, comment = "#>" )
+
+```
+```
+{r setup} library(pitDataR) 
+
+```
+
+
+## Why this package? 
+PIT antenna arrays are a common tool used to monitor tagged individuals on an ongoing basis. However, they often generate massive data sets with thousands or even millions of detections. Many of these detections are repeat detections of the same specimen that happens to be positioned near to the antenna for extended periods of time. Even discounting instances such as this(which is hardly possible, given that these detections are the majority in most setups), these setups still generate much more data than can be profitably explored using manual methods and software such as Microsoft Excel for any but the most basic queries. These methods work well for uses such as recording returning salmon during annual migrations, where the direction and timing of the event is well understood and the data of interest is simply "which fish are returning?". However, when trying to use these setups to answer questions in a much more dynamic environment, basic analytic methods quickly become nearly useless due to the shear quantity of data.  
+This package seeks to provide an automated, streamlined tool to quickly extract relevant information from these massive datasets. To see how to do this, we will begin by pulling data into package and then proceed to explore some of the basic tools that are offered by pitDataR.
+
+## Importing Data
+### Detection Data
+The first type of data to be brought in will be the actual detection data from the PIT monitoring array. pitDataR was built with BIOMARK arrays in mind, as this is a commonly used type, however documentation on how to use data from other sources should be found in the documentation for the individual functions as this functionality becomes available. I like to begin by setting a variable to the path to the file where the data is stored. You can "Shift-Right Click" on a file in Windows Explorer, then select "Copy to Path". When you paste it into R be sure to replace the "\\"s with "\\\\" or "/" as R will recognize the single slash("\\") as denoting an escape character rather than a directory in the file path. With this variable set we can procede. Use the pitDataR function to pull your .csv file containing the detection data into R and assign it to a variable. For more specifics on the expected format of the data see the documentation using `?pitDataR::get_detection_data`. 
+
+```{r}
+#set your own path with the format "yourDrive:/path/to/detection_data.csv"
+path_to_data <- "../data/sample_detection_data.csv"
+
+my_detection_data <- pitDataR::get_detection_data(path_to_data)
+
+head(my_detection_data)
+
+```
+The function pitDataR::get_detection_data() expects a .csv file with the fields:
+
+    1. tag
+    2. detected_at. Should be in the format "mm-dd-yyyy hh:mm:ss".
+       Automaticaly parsed to create the columns:
+        * year 
+        * month
+        * week
+        * day
+        * hour 
+    3. reader. The reader or array that made the detection
+    4. antenna. The particular antenna within the array that made the detection.
+        
+The detection data has now been read into R and prepared for further analysis. Another type of data that may be needed is a list <sup>[1](#listdef)</sup> containing tags "of interest" so that we can restrict our explorations to a particular subset of the population.  
+  
+<a name="listdef">1</a>: used vernacularly rather than to mean the R data type 'list'.
