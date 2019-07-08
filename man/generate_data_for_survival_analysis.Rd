@@ -7,14 +7,27 @@
 generate_data_for_survival_analysis(data_set, tags, dates)
 }
 \arguments{
-\item{data_set}{Data read in using
-\code{\link{get_detection_data}}.}
+\item{data_set}{Data read in using \code{\link{get_detection_data}}.}
 
 \item{tags}{Dataframe of tags to be examined}
 
 \item{dates}{Character vector containing the dates at which you want to break
 the analysis into. Use "mm-dd-yyyy" format when entering dates.}
 }
+\value{
+Eventually the function will return a .txt file of the data formatted
+  to the detection history format used by MARK software that will allow for
+  survival analysis. Currently it creates a dataframe object containing
+  columns for tag, a initial detection, and each subsequent detection period.
+  The detection period data is recorded as a either a 0 for no detection in
+  that period or as a 1 indicating a detection in that period.
+}
 \description{
 Used for preparing data for survival analysis using MARK software.
+}
+\note{
+This generates data specifically for mark/recapture survivalship
+  analysis. For more information see
+  \href{http://www.phidot.org/software/mark/docs/book/}{\emph{Program MARK: a
+  gentle introduction}}.
 }

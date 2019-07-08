@@ -8,7 +8,7 @@ tags_with_species_code(tags_text_file)
 }
 \arguments{
 \item{tags_text_file}{A csv file containing tags and species code. Expects
-file to how column of row numbers but then removes them. Skips line
+file to show column of row numbers but then removes them. Skips line
 containing columnames.}
 }
 \value{
