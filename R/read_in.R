@@ -24,7 +24,7 @@ get_tag_list <- function(tags_text_file){
 #'
 #' Gets tag numbers and species code from csv file
 #' @param tags_text_file A csv file containing tags and species code. Expects
-#'   file to how column of row numbers but then removes them. Skips line
+#'   file to show column of row numbers but then removes them. Skips line
 #'   containing columnames.
 #' @return Returns dataframe with two columns "tag" and "species" to be used
 #'   with other functions in this package.
@@ -47,7 +47,12 @@ tags_with_species_code <- function(tags_text_file){
 #' Class to import datetime from character variable in original dataset in correct format.
 
 setClass('myDate')
-setAs("character", "myDate", function(from) as.POSIXct(from, format = "%m-%d-%Y %H:%M:%S"))
+setAs("character", "myDate", function(from) as.POSIXct(from,
+                                                       tryFormats = c(
+                                                           "%m-%d-%Y %H:%M:%S",
+                                                           "%m/%d/%Y %H:%M:%S")
+                                                       )
+      )
 
 
 
