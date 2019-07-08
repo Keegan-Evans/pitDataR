@@ -13,5 +13,8 @@ Imports:
  lazyeval,
  magrittr
 Suggests:
- RODBC
+    RODBC,
+    knitr,
+    rmarkdown
 RoxygenNote: 6.1.1
+VignetteBuilder: knitr
